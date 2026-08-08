@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ambroise Nouma — Portfolio Publicitaire</title>
+
+    <meta name="description"
+          content="Portfolio de créations publicitaires : affiches, vidéos et contenus visuels.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #111111;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(17, 17, 17, 0.94);
+            border-bottom: 1px solid #2b2b2b;
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            max-width: 1150px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #d9a441;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d9a441;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 85vh;
+            max-width: 1150px;
+            margin: auto;
+            padding: 100px 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .small-title {
+            color: #d9a441;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 85px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #d9a441;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #bdbdbd;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 25px;
+            border: 1px solid #d9a441;
+            color: #d9a441;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #d9a441;
+            color: #111111;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            margin-bottom: 45px;
+        }
+
+        .section-title small {
+            color: #d9a441;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 8px;
+        }
+
+        .section-title p {
+            color: #999999;
+            margin-top: 10px;
+        }
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: #191919;
+            border: 1px solid #292929;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: #d9a441;
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            background: #242424;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777777;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 22px;
+        }
+
+        .project-info h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .project-info p {
+            color: #999999;
+            font-size: 14px;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 15px;
+            color: #d9a441;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           VIDEO
+        ========================= */
+
+        .video-box {
+            background: #191919;
+            border: 1px solid #292929;
+            padding: 25px;
+        }
+
+        .video-placeholder {
+            aspect-ratio: 16 / 9;
+            background: #090909;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777777;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            max-width: 800px;
+        }
+
+        .about p {
+            color: #bdbdbd;
+            font-size: 17px;
+            margin-bottom: 18px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #292929;
+            text-align: center;
+            padding: 35px 20px;
+            color: #777777;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #d9a441;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 75vh;
+                padding-top: 70px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="#" class="logo">
+            Ambroise<span>.</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#projets">Projects</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                Advertising & Visual Creation
+            </div>
+
+            <h1>
+                Creative visuals<br>
+                <span>made to stand out.</span>
+            </h1>
+
+            <p>
+                Portfolio de créations publicitaires :
+                affiches, vidéos promotionnelles et contenus
+                visuels conçus pour donner vie aux marques.
+            </p>
+
+            <a href="#projets" class="button">
+                Voir mes réalisations
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================= -->
+
+    <section id="projets">
+
+        <div class="section-title">
+
+            <small>Selected work</small>
+
+            <h2>Projets publicitaires</h2>
+
+            <p>
+                Une sélection de créations réalisées pour
+                illustrer différentes directions artistiques.
+            </p>
+
+        </div>
+
+
+        <div class="projects">
+
+
+            <!-- PROJET 1 -->
+
+            <article class="project">
+
+                <div class="project-image">
+                    <span>IMAGE À AJOUTER</span>
+                </div>
+
+                <div class="project-info">
+
+                    <h3>Noiré Pizza</h3>
+
+                    <p>
+                        Affiche publicitaire premium pour une
+                        marque fictive de pizza artisanale.
+                    </p>
+
+                    <span class="tag">
+                        Advertising Poster
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- PROJET 2 -->
+
+            <article class="project">
+
+                <div class="project-image">
+                    <span>IMAGE À AJOUTER</span>
+                </div>
+
+                <div class="project-info">
+
+                    <h3>Restaurant Campaign</h3>
+
+                    <p>
+                        Concept visuel publicitaire destiné
+                        aux réseaux sociaux.
+                    </p>
+
+                    <span class="tag">
+                        Food Advertising
+                    </span>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         VIDEOS
+    ========================= -->
+
+    <section id="videos">
+
+        <div class="section-title">
+
+            <small>Motion & video</small>
+
+            <h2>Vidéos publicitaires</h2>
+
+            <p>
+                Des formats courts conçus pour présenter
+                des produits et attirer l'attention.
+            </p>
+
+        </div>
+
+
+        <div class="video-box">
+
+            <div class="video-placeholder">
+
+                <p>
+                    Les vidéos seront ajoutées ici.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section id="about">
+
+        <div class="section-title">
+
+            <small>About</small>
+
+            <h2>À propos</h2>
+
+        </div>
+
+        <div class="about">
+
+            <p>
+                Je conçois des visuels publicitaires et des
+                contenus créatifs destinés à mettre en valeur
+                des produits, services et marques.
+            </p>
+
+            <p>
+                Mon approche combine direction artistique,
+                composition visuelle, storytelling et outils
+                de création numérique.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    © 2026 <strong>Ambroise Nouma</strong> —
+    Advertising & Visual Creation
+
+</footer>
+
+</body>
+</html>
